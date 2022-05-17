@@ -86,8 +86,7 @@ admin.add_view(MyModelView(User, db.session,
                            can_export=True))
 admin.add_view(MyModelView(Question, db.session, list_columns=['id', 'number', 'description', 'professor_name']))
 admin.add_view(MyModelView(Rates, db.session,
-                           list_columns=['username', 'group', 'q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'rate1',
-                                         'rate2', 'rate3', 'rate4', 'q8', 'q9', 'rate'], can_export=True))
+                           list_columns=['username', 'group', 'q1','rate'], can_export=True))
 admin.add_view(MyModelView(Group, db.session, list_columns=['id', 'number', 'name', 'professor']))
 admin.add_view(MyModelView(Rank, db.session,
                            list_columns=['username', 'date', 'list_rank', 'number_questions', 'experiment_group'],
