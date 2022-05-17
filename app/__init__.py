@@ -11,8 +11,8 @@ import os
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'
-app.config['SECRET_KEY'] = 'postgresql://dqugixmtqyuqit:61ea696247f5955c681dacb3b13dfb0fb6ccfa917f9b5377a5369651d08f061b@ec2-44-195-169-163.compute-1.amazonaws.com:5432/d7joir2224avto'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db-app.db'
+app.config['SECRET_KEY'] = 'c1d1428bdb26cbd00161ea16baf59f206da3cf4a54306f0787373127496cf51e'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://dqugixmtqyuqit:61ea696247f5955c681dacb3b13dfb0fb6ccfa917f9b5377a5369651d08f061b@ec2-44-195-169-163.compute-1.amazonaws.com:5432/d7joir2224avto'
 #app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
