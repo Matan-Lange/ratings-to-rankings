@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+group page
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+<!--<h1>{{group}} מספר קבוצה מציגה</h1>-->
+<h2 class="mt-3">{{groupname}}</h2>
+<br>
+
+<div class="container">
+    <form method="POST" class="" style="color:black">
+        {{form.hidden_tag()}}
+
+        <!-- <h1 class="h3 mb-3 font-weight-normal">
+             דירוג
+         </h1>
+
+         <br>-->
+
+        <p>הערות</p>
+        {{form.q1(class="form-control",placeholder="שאלה 1 " ,dir="rtl")}}
+
+
+
+        <br>
+        <br>
+        {{form.submit(class="btn btn-lg btn-primary")}}
+
+
+    </form>
+</div>
+</body>
+
+
+{% endblock %}
