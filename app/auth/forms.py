@@ -13,10 +13,10 @@ class RegisterForm(FlaskForm):
         if user:
             raise ValidationError('Email address Exists')
 
-    def validate_username(self, username_to_check):
-        user = User.query.filter_by(username=username_to_check.data).first()
-        if user:
-            raise ValidationError('Username Exists')
+    # def validate_username(self, username_to_check):
+    #     user = User.query.filter_by(username=username_to_check.data).first()
+    #     if user:
+    #         raise ValidationError('Username Exists')
 
     def validate_password1(self,password1):
         if len(password1.data) < 8:
@@ -24,11 +24,14 @@ class RegisterForm(FlaskForm):
 
     def validate_username(self,username):
 
-        if  len(username.data) < 9 :
-            raise ValidationError('User name not valid ')
+        user = User.query.filter_by(username=username.data).first()
+        if user:
+            raise ValidationError('Username Exists')
+
         if len(username.data) !=9 :
             if len(username.data) !=11 or username.data[0:2] != '99':
-                raise ValidationError('User name not valid ')
+                raise ValidationError('User name not valid - use 99  ')
+
 
 
 
