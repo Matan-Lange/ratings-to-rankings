@@ -75,7 +75,7 @@ class MyModelView(ModelView):
     # insert admin users!!!!
     def is_accessible(self):
         user = current_user.username
-        if user == '313388241' or user == '313354938':
+        if user == '313388241' or user == '313354938' or user =='037218898':
             return True
         else:
             return False
