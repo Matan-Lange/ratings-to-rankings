@@ -8,10 +8,11 @@ from app.models import User
 class RegisterForm(FlaskForm):
 
     # validate under score will check and do validation - no need to use just need to right correctly
-    def validate_email_address(self, email_address_to_check):
-        user = User.query.filter_by(email_address=email_address_to_check.data).first()
-        if user:
-            raise ValidationError('Email address Exists')
+
+    # def validate_email_address(self, email_address_to_check):
+    #     user = User.query.filter_by(email_address=email_address_to_check.data).first()
+    #     if user:
+    #         raise ValidationError('Email address Exists')
 
     # def validate_username(self, username_to_check):
     #     user = User.query.filter_by(username=username_to_check.data).first()

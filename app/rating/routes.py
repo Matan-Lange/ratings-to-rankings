@@ -46,7 +46,7 @@ def rate_page(groupnum):
 
         rate = int(form.rate.data)
 
-        rate_to_create = Rates(username=username, group=groupnum, q1=ans_q1, rate=rate)
+        rate_to_create = Rates(username=username, group=groupnum, q1=ans_q1, rate=rate,datetime = datetime.now())
 
         same_rate = db.session.query(Rates).filter(
             Rates.username == current_user.username).filter(Rates.rate == rate).filter(Rates.group != groupnum).all()

@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.Column(db.String(length=30), nullable=False, unique=True)
     name = db.Column(db.String(length=30), nullable=False, unique=False)
-    email_address = db.Column(db.String(length=50), nullable=False, unique=True)
+    email_address = db.Column(db.String(length=50), nullable=False, unique=False)
     password_hash = db.Column(db.String(length=60), nullable=False)  # hash algo converts to 60 hash
     professor_name = db.Column(db.String(length=20), nullable=False, unique=False)
 
@@ -50,7 +50,7 @@ class Rates(db.Model):
     username = db.Column(db.String(), nullable=False, primary_key=True)
     group = db.Column(db.Integer(), nullable=False, primary_key=True)
     q1 = db.Column(db.String(), nullable=False)
-
+    datetime = db.Column(db.DATETIME, nullable=True)
     rate = db.Column(db.Integer(), nullable=False)
 
 
