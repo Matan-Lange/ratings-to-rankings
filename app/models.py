@@ -50,7 +50,7 @@ class Rates(db.Model):
     username = db.Column(db.String(), nullable=False, primary_key=True)
     group = db.Column(db.Integer(), nullable=False, primary_key=True)
     q1 = db.Column(db.String(), nullable=False)
-    datetime = db.Column(db.DATETIME, nullable=True)
+    datetime = db.Column(db.DateTime(), nullable=True)
     rate = db.Column(db.Integer(), nullable=False)
 
 
