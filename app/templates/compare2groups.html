@@ -13,13 +13,13 @@ Market Page
         <h3> שלום </h3>
         <br>
         <h6> המערכת זיהתה על סמך הזנת הציונים שהגשת </h6>
-        <h6>כי פרויקט של {{group_name}} ופרויקט של {{compare_name}} בעלות דירוג זהה</h6>
+        <h6>כי נתת ציון משוב זהה לשתי קבוצות: {{group_name}} ,{{compare_name}}</h6>
         <br><br>
         <h6>?מי טובה יותר לדעתך</h6>
 
         {% for subfield in form.select %}
         <tr>
-            <td>{{ subfield(class="btn") }}</td>
+            <td>{{ subfield(class="btn ") }}</td>
             <td>{{ subfield.label}}</td>
         </tr>
         {% endfor %}

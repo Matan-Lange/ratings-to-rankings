@@ -6,7 +6,7 @@ from app.models import User
 
 
 class RateForm(FlaskForm):
-    q1 = TextAreaField(label=':q1', validators=[DataRequired()])
+    q1 = TextAreaField(label=':q1', validators=[])
 
     rate = RadioField('Label',
                     choices=[(1, 'טעון שיפור'), (2, 'סביר'), (3, 'טוב'), (4, 'טוב מאוד'), (5, 'מצוין')],
@@ -16,7 +16,7 @@ class RateForm(FlaskForm):
 
 
 class ChangeText(FlaskForm):
-    q1 = TextAreaField(label=':q1', validators=[DataRequired()])
+    q1 = TextAreaField(label=':q1', validators=[])
 
     submit = SubmitField(label='שליחה')
 
