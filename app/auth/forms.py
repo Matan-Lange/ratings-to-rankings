@@ -43,8 +43,7 @@ class RegisterForm(FlaskForm):
     name = StringField(label=':שם מלא', validators=[Length(min=0, max=30), DataRequired()])
     email_address = StringField(label=':דואר אלקטורני', validators=[Email(), DataRequired()])
     password1 = PasswordField(label=':סיסמה', validators=[ DataRequired()])
-    professor_name = SelectField(':מושב', choices=[('a','9.5 08:00-12:30'),('b','24.5 13:00-16:30'),
-                                                      ('c','7.6 09:00-12:30'),('d','7.6 13:00-16:30')])
+    professor_name = SelectField(':מושב', choices=[('a','9.5 08:00-12:30'),('b','9.7 09:00-15:00'),])
     approval = BooleanField(label='אישור השתתפות בניסוי', validators=[DataRequired()])
     sumbit = SubmitField(label='הרשמה')
 
