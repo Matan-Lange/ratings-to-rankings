@@ -52,6 +52,7 @@ class Rates(db.Model):
     q1 = db.Column(db.String(), nullable=True)
     datetime = db.Column(db.DateTime(), nullable=True)
     rate = db.Column(db.Integer(), nullable=False)
+    others_think = db.Column(db.String(length=1024), nullable=True)
 
 
 class Rank(db.Model):
@@ -61,9 +62,12 @@ class Rank(db.Model):
     number_questions = db.Column(db.Integer(), nullable=False, default=0)
     experiment_group = db.Column(db.Integer(), nullable=False, default=1)  # change default to random for review group
 
+
 class Temp_text(db.Model):
     username = db.Column(db.String(), nullable=False, primary_key=True)
     pickle = db.Column(db.String(), nullable=True)
+
+
 
 class MyModelView(ModelView):
     def __init__(self, model, session, name=None, category=None, endpoint=None, url=None, **kwargs):
@@ -86,7 +90,7 @@ admin.add_view(MyModelView(User, db.session,
                            can_export=True))
 admin.add_view(MyModelView(Question, db.session, list_columns=['id', 'number', 'description', 'professor_name']))
 admin.add_view(MyModelView(Rates, db.session,
-                           list_columns=['username','datetime', 'group', 'q1','rate'], can_export=True))
+                           list_columns=['username','datetime', 'group', 'q1','rate','others_think'], can_export=True))
 admin.add_view(MyModelView(Group, db.session, list_columns=['id', 'number', 'name', 'professor']))
 admin.add_view(MyModelView(Rank, db.session,
                            list_columns=['username', 'date', 'list_rank', 'number_questions', 'experiment_group'],

@@ -2,12 +2,12 @@ import pickle
 from ast import literal_eval
 from datetime import datetime
 
-from flask import Blueprint , session
+from flask import Blueprint, session
 from flask import render_template, redirect, url_for, flash, request
 from flask_login import login_required, current_user
 
 from app import db
-from app.models import Rates, Group, Question, Rank,Temp_text
+from app.models import Rates, Group, Question, Rank, Temp_text
 from app.rating.forms import RateForm, Compare2, ChangeText
 
 rating = Blueprint('rating', __name__)
@@ -43,10 +43,12 @@ def rate_page(groupnum):
         print(form.data)
         username = current_user.username
         ans_q1 = form.q1.data
+        others_think = repr([form.range1.data, form.range2.data, form.range3.data, form.range4.data, form.range5.data])
 
         rate = int(form.rate.data)
 
-        rate_to_create = Rates(username=username, group=groupnum, q1=ans_q1, rate=rate,datetime = datetime.now())
+        rate_to_create = Rates(username=username, group=groupnum, q1=ans_q1, rate=rate, datetime=datetime.now(),
+                               others_think=others_think)
 
         same_rate = db.session.query(Rates).filter(
             Rates.username == current_user.username).filter(Rates.rate == rate).filter(Rates.group != groupnum).all()
@@ -75,8 +77,6 @@ def rate_page(groupnum):
             temp_data = Temp_text(username=current_user.username, pickle=rate_to_create)
             db.session.add(temp_data)
             db.session.commit()
-
-
 
             return redirect(
                 url_for('rating.compare_page', same_rate_groups=repr(same_rate_groups)))
@@ -137,12 +137,11 @@ def rate_page(groupnum):
 @rating.route('/compare_page', methods=['GET', 'POST'])
 @login_required
 def compare_page():
-    #rate_to_create = request.args.get('rate_to_create')
+    # rate_to_create = request.args.get('rate_to_create')
 
     temp_text = Temp_text.query.filter_by(username=current_user.username).first()
 
-
-    #rate_to_create = session.pop('rate_to_create',None)
+    # rate_to_create = session.pop('rate_to_create',None)
 
     rate_to_create = pickle.loads(literal_eval(temp_text.pickle))
     groupnum = int(rate_to_create.group)
@@ -233,16 +232,11 @@ def change_text(groupnum):
 
         old_rate.q1 = ans_q1
 
-
-
-
         db.session.commit()
         flash("changes have been saved!", category="info")
         return redirect(url_for('rating.exp_page'))
 
     form.q1.data = old_rate.q1
-
-
 
     questions = Question.query.filter_by(professor_name=current_user.professor_name).all()
     groupname = Group.query.filter_by(number=groupnum).first().name

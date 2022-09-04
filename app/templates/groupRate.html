@@ -13,11 +13,6 @@ group page
     <form method="POST" class="" style="color:black">
         {{form.hidden_tag()}}
 
-        <!-- <h1 class="h3 mb-3 font-weight-normal">
-             דירוג
-         </h1>
-
-         <br>-->
 
         <p>הערות</p>
         {{form.q1(class="form-control",placeholder="" ,dir="rtl")}}
@@ -28,8 +23,41 @@ group page
         <tr>
             <td>{{ subfield }}</td>
             <td>{{ subfield.label}}</td>
+            <br>
         </tr>
         {% endfor %}
+
+
+        <br>
+        <p>העריכו מהו אחוז הסטודנטים שבחרו בכל אחת מהתשובות האפשריות</p>
+        <div style=>
+            <p style="display: inline-block"><span id="output1"></span>%</p>
+            {{form.range1(class="slider",min="0",max="100",value="0",id="range1",style = "display:inline-block")}}
+            <p style="display: inline-block">טעון שיפור</p>
+        </div>
+        <div>
+            <p style="display: inline-block"><span id="output2"></span>%</p>
+            {{form.range2(class="slider",min="0",max="100",value="0",id="range2", style = "display:inline-block")}}
+            <p style="display: inline-block">סביר </p>
+        </div>
+
+        <div>
+            <p style="display: inline-block"><span id="output3"></span>%</p>
+            {{form.range3(class="slider",min="0",max="100",value="0",id="range3", style = "display:inline-block")}}
+            <p style="display: inline-block">טוב </p>
+        </div>
+
+        <div>
+            <p style="display: inline-block"><span id="output4"></span>%</p>
+            {{form.range4(class="slider",min="0",max="100",value="0",id="range4", style = "display:inline-block")}}
+            <p style="display: inline-block">טוב מאוד</p>
+        </div>
+
+        <div>
+            <p style="display: inline-block"><span id="output5"></span>%</p>
+            {{form.range5(class="slider",min="0",max="100",value="0",id="range5", style = "display:inline-block")}}
+            <p style="display: inline-block">מצוין</p>
+        </div>
 
 
         <br>
@@ -41,5 +69,57 @@ group page
 </div>
 </body>
 
+<script>
+
+    var slider1 = document.getElementById("range1");
+    var output1 = document.getElementById("output1");
+    output1.innerHTML = slider1.value;
+
+    slider1.oninput = function () {
+        output1.innerHTML = this.value;
+    }
+
+    var slider2 = document.getElementById("range2");
+    var output2 = document.getElementById("output2");
+    output2.innerHTML = slider2.value;
+
+    slider2.oninput = function () {
+        output2.innerHTML = this.value;
+    }
+
+
+    var slider3 = document.getElementById("range3");
+    var output3 = document.getElementById("output3");
+    output1.innerHTML = slider1.value;
+
+    slider3.oninput = function () {
+        output3.innerHTML = this.value;
+    }
+
+
+    var slider4 = document.getElementById("range4");
+    var output4 = document.getElementById("output4");
+    output4.innerHTML = slider1.value;
+
+    slider4.oninput = function () {
+        output4.innerHTML = this.value;
+    }
+
+
+    var slider5 = document.getElementById("range5");
+    var output5 = document.getElementById("output5");
+    output5.innerHTML = slider5.value;
+
+    slider5.oninput = function () {
+        output5.innerHTML = this.value;
+    }
+
+
+</script>
+
 
 {% endblock %}
+
+
+
+
