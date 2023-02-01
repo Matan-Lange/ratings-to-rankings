@@ -10,11 +10,11 @@ import os
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'c1d1428bdb26cbd00161ea16baf59f206da3cf4a54306f0787373127496cf51e'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://dqugixmtqyuqit:61ea696247f5955c681dacb3b13dfb0fb6ccfa917f9b5377a5369651d08f061b@ec2-44-195-169-163.compute-1.amazonaws.com:5432/d7joir2224avto'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-#app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI') # cloud
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.secret_key = b'################'
 
 
 app.config['DEBUG'] = True
@@ -23,9 +23,9 @@ app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True #securty
 app.config['MAIL_DEBUG'] = True
-app.config['MAIL_USERNAME'] = 'projectariel2022@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Aa147852'
-app.config['MAIL_DEFAULT_SENDER'] ='projectariel2022@gmail.com'
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] =os.environ.get('MAIL_USERNAME')
 app.config['MAIL_MAX_EMAILS'] = 5 # max_mails
 app.config['MAIL_SUPPRESS_SEND'] = False  #stop sending when testing
 app.config['MAIL_ASCI_ATTACHMENTS'] = False #CONVERTS FILE NAME TO ASSCI
